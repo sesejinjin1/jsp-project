@@ -1,0 +1,47 @@
+html, body {margin: 0;padding: 0;height: 100%;}
+body {font-family: Arial, sans-serif; display: flex; flex-direction: column;}
+header {background: #0044cc; color: white; position: relative; height: auto; border-bottom: 1px solid #0033aa;}
+
+.top-bar {background: #0033aa; display: flex; justify-content: flex-end; width: 100%;}
+
+.actions {display: flex; align-items: center; }
+.actions a {color: white; text-decoration: none; margin: 0 10px; font-weight: bold; padding: 8px 15px; border-radius: 5px;}
+.actions .login { background: #0033aa;}
+.actions .signup {background: #0055ff;}
+.actions .logout {background: #0055ff;}
+
+.main-header { display: flex; align-items: center; background: #0044cc;}
+.container {max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%;}
+
+.logo a {color: white; text-decoration: none; font-size: 24px; font-weight: bold;}
+
+nav {flex: 2;}
+.nav-menu {list-style: none; padding: 0; margin: 0; display: flex; justify-content: space-around; width: 100%}
+.nav-menu .nav-item { position: relative; margin: 0 15px;}
+.nav-menu .nav-item a {color: white; text-decoration: none; font-weight: bold; display: block; padding: 10px; }
+
+.dropdown-menu {display: none; position: absolute; top: 100%; left: 0; background: #0033aa; list-style: none; padding: 0; margin: 0; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); width: 200px;}
+.dropdown-menu ul {width: 100%;}
+.dropdown-menu li {margin: 0;}
+.dropdown-menu li a {color: white; text-decoration: none; display: block; padding: 10px; }
+.dropdown-menu li a:hover {background: #0055ff;}
+.nav-item:hover .dropdown-menu { display: block;}
+
+main { display: flex; flex-direction: column; padding: 20px; flex: 1; min-height: 1400px;}
+
+.top-section, .bottom-section { width: 100%; display: flex; flex-direction: column; margin-top: 250px; margin-bottom: 100px; }
+.info-boxes { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;}
+.info-box { flex: 1 1 22%; background: #f4f4f4; padding: 10px; border: 1px solid #ddd; border-radius: 5px; text-align: center; box-sizing: border-box;}
+.info-box img {width: 100%; height: auto; border-radius: 5px;}
+
+.updateUser {color: white; text-decoration: none; font-size: 24px; font-weight: bold;}
+/* .info-box p {margin: 10px 0 0; height: 70%;} */
+/* .info-box p a {display: block; height: 100% ;  border-radius: 10px; box-sizing: border-box; background-color: #fff; text-align: center; font-size: 28px; color: #2b2b2b; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1); background-image: url(../images/back.jpg); background-size: cover;} */
+
+footer {background: #0044cc; color: white; text-align: center; border-top: 1px solid #0033aa; width: 100%;}
+
+
+
+
+
+
