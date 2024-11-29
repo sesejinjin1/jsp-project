@@ -15,11 +15,13 @@
 		ResultSet rs = null;
 		Statement stmt = null;
 		String commentNo = request.getParameter("commentNo");
+		String boardNo = request.getParameter("boardNo");
 		try{
 			stmt = conn.createStatement();
 			
-			String querytext = "DELETE FROM board_comment WHERE commentNo = " + commentNo;
+			String querytext = "DELETE FROM board_comment WHERE commentNo=" + commentNo;
 			System.out.println(querytext);
+			System.out.println(boardNo);
 			stmt.executeUpdate(querytext);
 			
 		} catch(SQLException ex) {
@@ -31,5 +33,5 @@
 </html>
 <script>
 	alert("삭제되었다!");
-	history.back();
+	location.href = "board-noticeView.jsp?boardNo=<%=boardNo%>";
 </script>

@@ -37,6 +37,7 @@
 					+ "0, now(), now()"
 					+ ")";
 			stmt.executeUpdate(querytext);
+			out.println(querytext);
 		
 		} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());

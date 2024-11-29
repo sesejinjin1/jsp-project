@@ -140,15 +140,16 @@ button:focus {outline: none;box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);}
                         querytext = "SELECT * FROM board_comment WHERE BOARDNO = " + boardNo;
                         rs = stmt.executeQuery(querytext);
                         while (rs.next()) {
+                        	String commentNo = rs.getString("commentNo");
                     %>
                     <div class="comment-item">
                         <div class="comment-text">
-                            <%= rs.getString("userId") %> : <%= rs.getString("comment") %>
+                            <%= rs.getString("userId") %> : <%= rs.getString("comment") %> , <%=commentNo %>
                         </div>
                         <div class="comment-actions">
                                    	<%if(rs.getString("userId").equals(session.getAttribute("userId"))){ %>
-                                   	<button type="button" class="edit">수정</button>
-                            <button type="button" class="delete">삭제</button>          	
+                            <button type="button" class="edit">수정</button>
+                            <button type="button" class="delete" onclick="fnCommentDel(<%= commentNo %>)">삭제</button>          	
            <%} %>
                         </div>
                         
@@ -187,7 +188,12 @@ button:focus {outline: none;box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);}
 	function fnComment(){
 		var form = document.board;
 		console.log(form.boardNo.value);
+		if (form.comment.value == "") {
+			alert("댓글을 입력해주세요.");
+			return;
+	    }
 		var url = "comment-insert.jsp?boardNo="+ form.boardNo.value + "&comment=" + form.comment.value;
+		location.href = url;
 	}
 	
 	function fnReload(){
@@ -195,7 +201,15 @@ button:focus {outline: none;box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);}
 	}
 	function fnCommentDel(commentNo){
 		var form = document.board;
-		location.href = "comment-delete.jsp?commentNo = " + commentNo;
+		var url = "comment-delete.jsp?commentNo=" + commentNo+"&boardNo="+form.boardNo.value;
+		console.log(url);
+		if (!confirm("정말로 이 댓글을 삭제하시겠습니까?")){
+			 alert("댓글 삭제가 취소되었습니다.");
+			 return;
+	    }
+		
+		
+		location.href = url;
 		
 	}
 	function fnDelete(){
