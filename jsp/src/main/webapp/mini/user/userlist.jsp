@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>미니프로젝트</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../layout/default1.css">
 
 <style>
 .container1 {
@@ -172,7 +173,7 @@ button:focus {
 								<th>로그인 초기화</th>
 								
 							</tr>
-						<%@ include file="db.jsp" %>
+						<%@ include file="../db.jsp" %>
 						<%
 							ResultSet rs = null;
 							Statement stmt = null;
@@ -230,9 +231,7 @@ button:focus {
 
 	</main>
 
-	<footer>
-		<p>&copy; 세세진진 사이트.</p>
-	</footer>
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>
 <script>

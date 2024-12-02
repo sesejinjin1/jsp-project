@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>미니프로젝트</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../layout/default1.css">
 <style>
 .join-form {width: 100%;max-width: 600px;margin: 0 auto;}
 fieldset {border: none;padding: 0;margin: 0;}
@@ -23,7 +24,8 @@ legend {font-size: 1.2em;color: #007BFF;margin-bottom: 15px;}
 </head>
 <body>
 	<header>
-		<div class="top-bar">
+	<jsp:include page="../layout/header.jsp"></jsp:include>
+		<%-- <div class="top-bar">
             <div class="actions">
             	<%if((String)session.getAttribute("userId") != null){ %>
             	<p> <%= (String)session.getAttribute("userId") %> 님 환영합니다.</p>
@@ -67,7 +69,7 @@ legend {font-size: 1.2em;color: #007BFF;margin-bottom: 15px;}
 						</ul></li>
 				</ul>
 			</nav>
-		</div>
+		</div> --%>
 	</header>
 
 	<main class="container">
@@ -131,9 +133,7 @@ legend {font-size: 1.2em;color: #007BFF;margin-bottom: 15px;}
 
 	</main>
 
-	<footer>
-		<p>&copy; 세세진진 사이트.</p>
-	</footer>
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>
 <script src="joincheck.js"></script>

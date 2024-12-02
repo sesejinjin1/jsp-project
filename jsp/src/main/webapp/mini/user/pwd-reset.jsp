@@ -22,22 +22,18 @@
 
 </head>
 <body>
-	<%@include file="db.jsp"%>	
+	<%@include file="../db.jsp"%>	
 	<%
 		ResultSet rs = null;
 		Statement stmt = null;
-		String boardNo = request.getParameter("boardNo");
-		String comment = request.getParameter("comment");
-		String sessionId = (String) session.getAttribute("userId");
+		String userId = request.getParameter("userId");
 		try{
 			stmt = conn.createStatement();
-			String querytext = 
-					"INSERT INTO board_comment VALUES ("
-					+ "NULL, " + boardNo + ",'" + sessionId + "', '" + comment + "', "
-					+ "0, now(), now()"
-					+ ")";
-			stmt.executeUpdate(querytext);
-			out.println(querytext);
+			String query = 
+					"UPDATE mini_user SET "
+					+ "cnt = 0 "
+					+ "WHERE userId = '" + userId + "'";
+			stmt.executeUpdate(query);
 		
 		} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());
@@ -47,7 +43,7 @@
 </body>
 </html>
 <script>
- 	alert("저장되었습니다.");
- 	location.href = document.referrer;
+	alert("초기화 되었습니다.");
+	location.href="userlist.jsp";
 </script>
 ​

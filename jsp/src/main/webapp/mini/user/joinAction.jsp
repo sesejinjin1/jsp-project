@@ -10,8 +10,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file = "db.jsp" %>
+	<%@include file = "../db.jsp" %>
 	<%
+		
+		request.setCharacterEncoding("UTF-8");
+	
 		ResultSet rs = null;
 		Statement stmt = null;
 		
@@ -26,13 +29,14 @@
 		String gender = request.getParameter("userGender");
 		try{
 			stmt = conn.createStatement();
-			String query = "UPDATE mini_user SET userPwd='"+ pwd +"', userName='"+name+"', userJumin1='"+jumin1+"', userJumin2='"+jumin2+"', userPhone='"+phone+"', userGender='"+gender+"', userEmail='"+email1+"' WHERE userId='"+id+"'";
+			String query = "INSERT INTO mini_user (userId, userPwd, userName, userJumin1, userJumin2, userPhone, userGender, userEmail) VALUES ('"
+							+ id +"', '" + pwd + "' , '" + name  + "' , '" + jumin1  + "' , '" + jumin2  + "' , '" + phone  + "' , '" + gender  + "' , '" + email1  + "' )";
 			//System.out.println(query);
 			stmt.executeUpdate(query);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('"+ name + "님의 정보가 수정되었습니다.')");
-			script.println("location.href = 'userlist.jsp'");
+			script.println("alert('"+ name + "님 회원가입 되었습니다.')");
+			script.println("location.href = 'main.jsp'");
 			script.println("</script>");
 		}catch(SQLException ex){
 			out.println("SQLException :" + ex.getMessage());

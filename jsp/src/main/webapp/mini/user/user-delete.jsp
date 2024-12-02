@@ -10,7 +10,7 @@
 </head>
 <body>
 <body>
-	<%@include file="db.jsp"%>	
+	<%@include file="../db.jsp"%>	
 	<%
 		ResultSet rs = null;
 		Statement stmt = null;

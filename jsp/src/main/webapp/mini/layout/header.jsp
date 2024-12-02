@@ -1,42 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>미니프로젝트</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<header>
-    <div class="top-bar">
-        <div class="actions">
-            <% if((String)session.getAttribute("userId") != null) { %>
-                <p> <%= (String) session.getAttribute("userId") %> 님 환영합니다.</p>
-                <% if(session.getAttribute("status").equals("A")) { %>
-                    <a href="userlist.jsp" class="logout">회원목록</a>
-                <% } %>
-                <a href="logoutAction.jsp" class="logout">로그아웃</a>
-            <% } else { %>
-                <a href="login.jsp" class="login">로그인</a>
-                <a href="join.jsp" class="signup">회원가입</a>
-            <% } %>
-        </div>
-    </div>
-    <div class="main-header container">
-        <div class="logo">
-            <a href="main.jsp">세세진진</a>
-        </div>
-        <nav>
-            <ul class="nav-menu">
-                <li class="nav-item dropdown">
-                    <a href="#">메뉴1</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="board-notice.jsp">공지사항</a></li>
-                        <li><a href="#">서브 메뉴 2</a></li>
-                        <li><a href="#">서브 메뉴 3</a></li>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<div id="header">
+    <header>
+        <h1><a href="../main/main.jsp" class="active"><span>체육센터</span></a></h1>
+        <p class="slogan">
+            체육센터 홈페이지에 오신것을 환영합니다.</p>
+        <div id="GNB">
+            <aside class="top">
+                <div class="align_box">
+                    <nav>
+                        <ul>
+                            <li><a id="process_login" class="login proc_add_referer_" href="#"><span>로그인</span></a></li>
+                                    <li><a class="join" href="#"><span>회원가입</span></a></li>
+                                <li><a class="sitemap" href="#"><span>사이트맵</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+            <div id="topmenu">
+                <nav>
+                    <button type="button" class="show_all_menu">전체메뉴보기</button>
+                    <ul id="menu_topmenu" class="menu_topmenu ld1">
+                        <li class="cd1 cd1c2 hasChild childCount10">
+                            <a href="#" id="topmenu_id_2" class="l1 menusrl_4 menutype_move_child hasChild childCount10" data-depth="1">
+                                <span>센터소개</span>
+                            </a>
+                        </li>
+                        <li class="cd1 cd1c3 hasChild childCount4">
+                            <a href="#" id="topmenu_id_13" class="l1 menusrl_2 menutype_move_child hasChild childCount4" data-depth="1">
+                                <span>프로그램안내/강좌신청</span>
+                            </a>
+                        </li>
+                        <li class="cd1 cd1c4 hasChild childCount3">
+                            <a href="#" id="topmenu_id_31" class="l1 menusrl_3 menutype_move_child hasChild childCount3" data-depth="1">
+                                <span>대관안내/신청</span>
+                            </a>
+                        </li>
+                        <li class="cd1 cd1c5 hasChild childCount2">
+                            <a href="#" id="topmenu_id_39" class="l1 menusrl_5 menutype_move_child hasChild childCount2" data-depth="1">
+                                <span>참여/공간</span>
+                            </a>
+                        </li>
+                        <li class="cd1 cd1c6 hasChild childCount3">
+                            <a href="#" id="topmenu_id_44" class="l1 menusrl_6 menutype_move_child hasChild childCount3" data-depth="1">
+                                <span>마이페이지</span>
+                            </a>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
+                </nav>
+                
+            </div>
+        </div>
+    </header>
+</div>

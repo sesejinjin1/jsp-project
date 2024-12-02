@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>미니프로젝트</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../layout/default1.css">
 <style>
 
 /* 제목 스타일링 */
@@ -146,7 +147,7 @@ button:focus {
 			</nav>
 		</div>
 	</header>
-	<%@include file="db.jsp"%>	
+	<%@include file="../db.jsp"%>	
 	<%
 		ResultSet rs = null;
 		Statement stmt = null;
@@ -225,9 +226,7 @@ button:focus {
 <%}} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());
 		}%>
-	<footer>
-		<p>&copy; 세세진진 사이트.</p>
-	</footer>
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>
 <script>
