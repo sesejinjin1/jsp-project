@@ -9,8 +9,8 @@
                 <div class="align_box">
                     <nav>
                         <ul>
-                            <li><a id="process_login" class="login proc_add_referer_" href="#"><span>로그인</span></a></li>
-                                    <li><a class="join" href="#"><span>회원가입</span></a></li>
+                            <li><a id="process_login" class="login proc_add_referer_" href="../user/login.jsp"><span>로그인</span></a></li>
+                                    <li><a class="join" href="../user/join.jsp"><span>회원가입</span></a></li>
                                 <li><a class="sitemap" href="#"><span>사이트맵</span></a></li>
                         </ul>
                     </nav>

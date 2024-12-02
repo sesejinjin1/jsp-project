@@ -1,13 +1,6 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-@font-face { 
-	font-family:'BarcodeFont';
-	src:url("../font/Code39Azalea.woff") format('woff');
-}
-
-
-
 body	{ width: 100%; height: 100%; padding: 0; margin: 0; font-size: 18px; font-family: 'Noto Sans KR', NanumSquare, NanumGothic,"Malgun Gothic","맑은 고딕","돋움",Dotum,"굴림",Gulim,Helvetica,AppleGothic,Sans-serif; }
 *	{ font-family: 'Noto Sans KR', NanumSquare, NanumGothic,"Malgun Gothic","맑은 고딕","돋움",Dotum,"굴림",Gulim,Helvetica,AppleGothic,Sans-serif; }
 
@@ -307,3 +300,60 @@ MAIN
 	#container.main .align_2	{ padding: 0 10px; }
 }
 
+
+/*
+SUB
+*/
+#container.sub	{}
+#container.sub:before	{ display: block; height: 150px; box-sizing: content-box; background: #70aae5; background-size: auto 100%; text-align: center; font-size: 43px; font-weight: 500; color: #fff; content : attr(data-menu-name); }
+#container.sub:before	{ display: flex; align-items: center; justify-content: center; text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+
+#container.sub .container_align	{ position: relative; max-width: 1280px; margin: 0 auto; }
+#container.sub .container_align:after	{ display: block; clear: both; content: ""; }
+
+
+#container.sub #section	{ float: right; display: block; width: calc(100% - 230px - 50px); height: 100%; padding: 0; margin: 70px 0 70px 0; }
+#container.sub #section section	{}
+#container.sub #section section header	{ position: relative; padding-top: 50px; }
+#container.sub #section section h2 {max-width: 1280px; line-height: 1em; margin: 70px auto 30px auto; text-align: left; font-size: 38px; font-weight: bolder; color: #262626;}
+
+@media all and (max-width: 768px)
+{
+	#container.sub:before	{ font-size: 35px; }
+	
+	#container.sub #section section header .menu_path2	{ left: -10px; width: calc(100% + 20px); }
+	#container.sub #section section header .menu_path2 p > a	{ font-size: 12px; }
+	
+	#container.sub #section section header .sub_utility ul	{ top: -100px; }
+}
+
+@media all and (max-width: 600px)
+{
+	#container.sub #section section header .tabmenu ul	{ border-width: 1px 0 0 1px; border-style: solid; border-color: #c1c1c1; }
+	#container.sub #section section header .tabmenu ul li	{ width: 50% !important; border-width: 0 1px 1px 0; border-style: solid; border-color: #c1c1c1; }
+}
+
+@media all and (max-width: 425px)
+{
+	#container.sub:before	{ font-size: 30px; }
+	
+	#container.sub #section section header .menu_path2	{ line-height: 20px; }
+	#container.sub #section section header .menu_path2 p	{ padding: 15px 0; }
+	#container.sub #section section header .menu_path2 p > a.home	{ height: 21px; }
+}
+
+/*
+contents
+*/
+
+
+#container.sub #section section #contents	{ width: 100%; height: 100%; max-width: 1016px; margin: 50px auto; overflow: hidden; }
+#container.sub #section section #contents:after	{ display: block; clear: both; content: ""; }
+
+.content_header {padding: 10px 20px; border-top: 2px solid #78a8d6; background-color: #fff;}
+.content_header h3 {line-height: 2em; padding: 0; margin: 0 0 10px 0; background: none; font-size: 1.1em; font-weight: bold;}
+.content_header dl {padding: 0;margin: 0;list-style: none;}
+.content_header dl dt{float: left;padding: 0 5px 0 0;margin: 0;list-style: none;font-weight: 600;}
+.content_header dl dd{float: left; padding: 0; margin: 0; list-style: none;}
+
+.content_content{padding: 20px; border-width: 1px 0; border-style: solid none; border-color: #d6d6d6;}

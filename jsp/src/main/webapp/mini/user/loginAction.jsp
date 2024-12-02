@@ -36,14 +36,14 @@
 						PrintWriter script = response.getWriter();
 						script.println("<script>");
 						script.println("alert('"+ rs.getString("userName") + "님 로그인 되었습니다.')");
-						//script.println("location.href = 'main.jsp'");
+						//script.println("location.href = '../main/main.jsp'");
 						script.println("</script>");
 						
 						session.setAttribute("userId",rs.getString("userId"));
 						session.setAttribute("status",rs.getString("status"));
 						session.setMaxInactiveInterval(60*30);	//세션 (60초x30) 30분 유지
 						System.out.println(session.getAttribute("userId"));
-						response.sendRedirect("main.jsp");
+						response.sendRedirect("../main/main.jsp");
 						
 						query = "UPDATE mini_user SET cnt = 0 WHERE userId = '" + id + "'";	//로그인시 카운트 초기화
 						stmt.executeUpdate(query);

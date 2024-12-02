@@ -24,7 +24,7 @@
 			<li><a href="#">본문 바로가기</a></li>
 			<li><a href="#" id="top">주메뉴 바로가기</a></li>
 		</ul>
-	</div>
+</div>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 	<div id="body">
 		
@@ -53,7 +53,7 @@
 			<div class="section_2">
 				<div class="align_2">
 					<section class="notice">
-						<h2><a href="#">공지사항</a></h2>
+						<h2><a href="../board/board-notice.jsp">공지사항</a></h2>
 						<ul>
 							<li class="c1">
 		 										<a href="#">

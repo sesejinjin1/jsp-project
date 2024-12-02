@@ -27,7 +27,7 @@ nav {flex: 2;}
 .dropdown-menu li a:hover {background: #0055ff;}
 .nav-item:hover .dropdown-menu { display: block;}
 
-main { display: flex; flex-direction: column; padding: 20px; flex: 1; min-height: 1400px;}
+main { display: flex; flex-direction: column; padding: 20px; flex: 1; min-height: 1000px;}
 
 .top-section, .bottom-section { width: 100%; display: flex; flex-direction: column; margin-top: 250px; margin-bottom: 100px; }
 .info-boxes { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;}

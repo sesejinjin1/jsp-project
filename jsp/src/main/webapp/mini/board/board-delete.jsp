@@ -29,5 +29,5 @@
 </html>
 <script>
 	alert("삭제되었습니다.");
-	location.href="main.jsp";
+	location.href="../main/main.jsp";
 </script>

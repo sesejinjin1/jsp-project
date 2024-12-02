@@ -36,7 +36,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('"+ name + "님 회원가입 되었습니다.')");
-			script.println("location.href = 'main.jsp'");
+			script.println("location.href = '../main/main.jsp'");
 			script.println("</script>");
 		}catch(SQLException ex){
 			out.println("SQLException :" + ex.getMessage());

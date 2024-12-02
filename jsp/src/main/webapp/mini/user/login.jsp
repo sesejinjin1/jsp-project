@@ -29,86 +29,34 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="top-bar">
-            <div class="actions">
-            	<%if((String)session.getAttribute("userId") != null){ %>
-            	<p> <%= (String)session.getAttribute("userId") %> 님 환영합니다.</p>
-            	<a href="logoutAction.jsp" class="logout">로그아웃</a>
-            	<%} else{%>
-                <a href="login.jsp" class="login">로그인</a>
-                <a href="join.jsp" class="signup">회원가입</a>
-                <%}  %>
-            </div>
-        </div>
-        <div class="main-header container">
-            <div class="logo">
-                <a href="main.jsp">세세진진</a> <!-- 홈 링크 추가 -->
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item dropdown">
-                        <a href="#">메뉴1</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="board-notice.jsp">공지사항</a></li>
-                            <li><a href="#">서브 메뉴 2</a></li>
-                            <li><a href="#">서브 메뉴 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#">메뉴2</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">서브 메뉴 1</a></li>
-                            <li><a href="#">서브 메뉴 2</a></li>
-                            <li><a href="#">서브 메뉴 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#">메뉴3</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">서브 메뉴 1</a></li>
-                            <li><a href="#">서브 메뉴 2</a></li>
-                            <li><a href="#">서브 메뉴 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#">메뉴4</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">서브 메뉴 1</a></li>
-                            <li><a href="#">서브 메뉴 2</a></li>
-                            <li><a href="#">서브 메뉴 3</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-        <div class="login-container">
-        <h2>회원 로그인</h2>
-						<form id="loginForm" action="loginAction.jsp" method="post" class="login-form">
-                            <fieldset>	
-                                	<div class="form-group">
-                                   		<p><label for="userId">아이디</label><input id="userId" name="userId" placeholder="아이디" autofocus="autofocus" type="text" value="" maxlength="15"/></p>
-									</div>
-									<div class="form-group">
-										<p><label for="userPwd">비밀번호</label><input id="userPwd" name="userPwd" placeholder="비밀번호" type="password" value="" maxlength="15"/></p>
-									</div>
-									<div class="form-group">
-										<button type="submit">로그인</button>
-									</div>
-								
-					    	</fieldset>
-                        </form>
-                    <div class="link_box">
-						    <a href="join.jsp">회원가입</a>
-						    <a href="#">아이디찾기</a>
-						    <a href="#">비밀번호찾기</a>
-                    </div>
+    <jsp:include page="../layout/header.jsp"></jsp:include>
+    <div id="container" class="sub" data-menu-name="회원메뉴">
+        <div class="container_align">
+        	<div id="section">
+		        <h2>회원 로그인</h2>
+				<form id="loginForm" action="loginAction.jsp" method="post" class="login-form">
+                          <fieldset>	
+                              	<div class="form-group">
+                                 		<p><label for="userId">아이디</label><input id="userId" name="userId" placeholder="아이디" autofocus="autofocus" type="text" value="" maxlength="15"/></p>
+							</div>
+							<div class="form-group">
+								<p><label for="userPwd">비밀번호</label><input id="userPwd" name="userPwd" placeholder="비밀번호" type="password" value="" maxlength="15"/></p>
+							</div>
+							<div class="form-group">
+								<button type="submit">로그인</button>
+							</div>
+						
+			    	</fieldset>
+                      </form>
+                   <div class="link_box">
+					    <a href="join.jsp">회원가입</a>
+					    <a href="#">아이디찾기</a>
+					    <a href="#">비밀번호찾기</a>
+                   </div>
+           	</div>
         </div>
 						
-    </main>
+    </div>
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>
