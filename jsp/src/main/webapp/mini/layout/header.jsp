@@ -9,9 +9,15 @@
                 <div class="align_box">
                     <nav>
                         <ul>
+                        	<% if((String)session.getAttribute("userId") != null){ %>
+                        	<li><a class="session"><span> <%=(String)session.getAttribute("userId") %> 님 환영합니다.</span><a></li>
+                        	<li><a href="../user/logoutAction.jsp">로그아웃</a></li>
+                        	<li><a href="../user/userlist.jsp"><span>회원관리</span></a></li>
+                        	<%} else{ %>
                             <li><a id="process_login" class="login proc_add_referer_" href="../user/login.jsp"><span>로그인</span></a></li>
-                                    <li><a class="join" href="../user/join.jsp"><span>회원가입</span></a></li>
-                                <li><a class="sitemap" href="#"><span>사이트맵</span></a></li>
+                            <li><a class="join" href="../user/join.jsp"><span>회원가입</span></a></li>
+                            <li><a class="sitemap" href="#"><span>사이트맵</span></a></li>
+                            <%} %>
                         </ul>
                     </nav>
                 </div>

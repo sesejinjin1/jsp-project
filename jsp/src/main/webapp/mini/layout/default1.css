@@ -62,7 +62,10 @@ HEADER
 #GNB aside.top .align_box nav ul li a.member_level	{ background-image: url(../image/header_icon_join.png); }
 #GNB aside.top .align_box nav ul li a:focus, #GNB aside.top .align_box nav ul li a:hover, #GNB aside.top .align_box nav ul li a:active	{ color: #000; text-decoration: underline; }
 #GNB aside.top .align_box nav ul li a.member_level	{ width: auto; padding: 0 0 0 29px; background-position: left center; text-align: left; text-indent: 0; font-size: 14px; }
-
+#GNB aside.top .align_box nav ul li a.session {color: #1b1b1b; text-decoration: none;}
+#GNB aside.top .align_box nav ul li a.session:focus,
+#GNB aside.top .align_box nav ul li a.session:hover,
+#GNB aside.top .align_box nav ul li a.session:active {color: #1b1b1b;text-decoration: none;background-color: transparent;}
 
 
 
@@ -312,7 +315,7 @@ SUB
 #container.sub .container_align:after	{ display: block; clear: both; content: ""; }
 
 
-#container.sub #section	{ float: right; display: block; width: calc(100% - 230px - 50px); height: 100%; padding: 0; margin: 70px 0 70px 0; }
+#container.sub #section	{ float: right; display: block; width: calc(100% - 120px - 50px); height: 100%; padding: 0; margin: 70px 0 70px 0; }
 #container.sub #section section	{}
 #container.sub #section section header	{ position: relative; padding-top: 50px; }
 #container.sub #section section h2 {max-width: 1280px; line-height: 1em; margin: 70px auto 30px auto; text-align: left; font-size: 38px; font-weight: bolder; color: #262626;}

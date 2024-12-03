@@ -54,50 +54,40 @@
 				<div class="align_2">
 					<section class="notice">
 						<h2><a href="../board/board-notice.jsp">공지사항</a></h2>
+						
 						<ul>
-							<li class="c1">
-		 										<a href="#">
-		 											<em class="category category_공지">공지</em>
-		 											<br class="br">
-													<strong class="title">제목</strong>
-													<span class="content">내용</span>
-													<span class="date">date</span>
-												</a>
-											</li>
-										<li class="c2">
-		 										<a href="#">
-		 											<em class="category category_공지">공지</em>
-													<strong class="title">제목</strong>
-													<br class="br">
-													<span class="content">1내용.</span>
-													<br class="br">
-													<span class="date">date</span>
-												</a>
-											</li>
-										<li class="c3">
-		 										<a href="#">
-		 											<em class="category category_공지">공지</em>
-		 											<br class="br">
-													<strong class="title">제목</strong>
-													<br class="br">
-													<span class="content">내용</span>
-													<br class="br">
-													<span class="date">date</span>
-												</a>
-											</li>
-										<li class="c4">
-		 										<a href="#">
-		 											<em class="category category_공지">공지</em>
-		 											<br class="br">
-													<strong class="title">제목</strong>
-													<br class="br">
-													<span class="content">내용</span>
-													<br class="br">
-													<span class="date">date</span>
-												</a>
-											</li>
-										</ul>
+							<%@include file="../db.jsp" %>
+							<%
+								ResultSet rs = null;
+								Statement stmt = null;
+								
+								try{
+									stmt = conn.createStatement();
+									String query = "SELECT ROW_NUMBER() OVER (ORDER BY cdatetime DESC) AS rowNum, boardNo,contents, title,cdatetime, userId FROM board_notice LIMIT 4" ;
+									rs = stmt.executeQuery(query);
+									
+									while(rs.next()){
+										
+									
+							%>
+							<li class="c<%=rs.getInt("rowNum")%>">
+								<a href="#" onclick="fnView('<%= rs.getString("boardNo") %>')"> <%= rs.getString("title") %>>
+									<em class="category category_공지">공지</em>
+									<strong class="title"><%=rs.getString("title") %></strong>
+									<span class="content"><%=rs.getString("contents") %></span>
+									<span class="date"><%=rs.getString("cdatetime") %></span>
+								</a>
+							</li>
+							
+								<%} %>
+						</ul>
 					</section>
+					<%
+						} catch(SQLException ex) {
+							out.println("SQLException : " + ex.getMessage());
+						}
+					%>
+					
 				</div>
 			</div>
 			
@@ -107,7 +97,11 @@
 <hr class="linebreak">
 <jsp:include page="../layout/footer.jsp"></jsp:include>
 	</div>
-	
-	
-	
-<div class="gnb_cover" style="display: none;"></div></body></html>
+<div class="gnb_cover" style="display: none;"></div>
+</body>
+</html>
+<script>
+	function fnView(boardNo){
+		location.href="../board/board-noticeView.jsp?boardNo="+boardNo;
+	}
+</script>

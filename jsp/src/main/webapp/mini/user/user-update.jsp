@@ -112,68 +112,70 @@ button:focus {
 		
 	%>
 	
-	<main class="container">
-		<div class="top-section">
-			<h2 style="text-align: center;">회원 정보 수정</h2>
-			<form id="joinForm" action="userUpdateAction.jsp" method="post"
-				style="text-align: center;" name="joinForm">
-				<fieldset>
-					<div class="inbox">
-						<p>
-							<label for="userId">아이디 </label><input id="userId" name="userId"
-								style="ime-mode: disabled;" placeholder="아이디"
-								autofocus="autofocus" type="text" value="<%=rs.getString("userId") %>" maxlength="30" readonly="readonly"/>
-						</p>
-						<p>
-							<label for="userPwd">비밀번호 </label><input id="userPwd"
-								name="userPwd" placeholder="비밀번호" type="password" value="<%=rs.getString("userPwd") %>"
-								maxlength="30" />
-						</p>
-						<p>
-							<label for="userPwd2">비밀번호 확인 </label><input id="userPwd2"
-								name="userPwd2" placeholder="비밀번호 확인" type="password" value="<%=rs.getString("userPwd") %>"
-								maxlength="30" />
-						</p>
-						<p>
-							<label for="userName">이름 </label><input id="userName"
-								name="userName" placeholder="이름" type="text" value="<%=rs.getString("userName") %>"
-								maxlength="30" />
-						</p>
-						<p>
-							<label for="userJumin1">주민등록번호 </label><input id="userJumin1"
-								name="userJumin1" placeholder="앞 6자리" type="text" value="<%=rs.getString("userJumin1") %>"
-								maxlength="6" /> - <input id="userJumin2"
-								name="userJumin2" placeholder="뒤 7자리" type="text" value="<%=rs.getString("userJumin2") %>"
-								maxlength="7" />
-						</p>
-						<p>
-							<label for="userPhone">핸드폰 번호 </label><input id="userPhone"
-								name="userPhone" placeholder="- 제외하고 입력해주세요" type="text"
-								value="<%=rs.getString("userPhone") %>" maxlength="11" />
-						</p>
-						<p>
-							<label for="userEmail">이메일 주소 </label><input id="userEmail1"
-								name="userEmail1" placeholder="이메일 주소" type="text" value="<%=rs.getString("userEmail") %>"
-								maxlength="30" />
-						</p>
-						<p><%if(rs.getString("userGender").equals("M")){%>
-							성별 <label>남 <input type="radio" name="userGender"
-								value="M" checked="checked" ></label> <label>여 <input type="radio"
-								name="userGender" value="F"></label><%}else{%>
-							성별 <label>남 <input type="radio" name="userGender"
-								value="M"></label> <label>여 <input type="radio"
-								name="userGender" value="F"  checked="checked" ></label><%} %>
-						</p>
-						<p>
-							<button type="submit">정보수정</button>
-							<button type="reset">다시입력</button>
-						</p>
-					</div>
-				</fieldset>
-			</form>
+	<div id="container" class="sub" data-menu-name="관리자페이지">
+		<div class="container_align">
+			<div id="section">
+				<h2 style="text-align: center;">회원 정보 수정</h2>
+				<form id="joinForm" action="userUpdateAction.jsp" method="post"
+					style="text-align: center;" name="joinForm">
+					<fieldset>
+						<div class="inbox">
+							<p>
+								<label for="userId">아이디 </label><input id="userId" name="userId"
+									style="ime-mode: disabled;" placeholder="아이디"
+									autofocus="autofocus" type="text" value="<%=rs.getString("userId") %>" maxlength="30" readonly="readonly"/>
+							</p>
+							<p>
+								<label for="userPwd">비밀번호 </label><input id="userPwd"
+									name="userPwd" placeholder="비밀번호" type="password" value="<%=rs.getString("userPwd") %>"
+									maxlength="30" />
+							</p>
+							<p>
+								<label for="userPwd2">비밀번호 확인 </label><input id="userPwd2"
+									name="userPwd2" placeholder="비밀번호 확인" type="password" value="<%=rs.getString("userPwd") %>"
+									maxlength="30" />
+							</p>
+							<p>
+								<label for="userName">이름 </label><input id="userName"
+									name="userName" placeholder="이름" type="text" value="<%=rs.getString("userName") %>"
+									maxlength="30" />
+							</p>
+							<p>
+								<label for="userJumin1">주민등록번호 </label><input id="userJumin1"
+									name="userJumin1" placeholder="앞 6자리" type="text" value="<%=rs.getString("userJumin1") %>"
+									maxlength="6" /> - <input id="userJumin2"
+									name="userJumin2" placeholder="뒤 7자리" type="text" value="<%=rs.getString("userJumin2") %>"
+									maxlength="7" />
+							</p>
+							<p>
+								<label for="userPhone">핸드폰 번호 </label><input id="userPhone"
+									name="userPhone" placeholder="- 제외하고 입력해주세요" type="text"
+									value="<%=rs.getString("userPhone") %>" maxlength="11" />
+							</p>
+							<p>
+								<label for="userEmail">이메일 주소 </label><input id="userEmail1"
+									name="userEmail1" placeholder="이메일 주소" type="text" value="<%=rs.getString("userEmail") %>"
+									maxlength="30" />
+							</p>
+							<p><%if(rs.getString("userGender").equals("M")){%>
+								성별 <label>남 <input type="radio" name="userGender"
+									value="M" checked="checked" ></label> <label>여 <input type="radio"
+									name="userGender" value="F"></label><%}else{%>
+								성별 <label>남 <input type="radio" name="userGender"
+									value="M"></label> <label>여 <input type="radio"
+									name="userGender" value="F"  checked="checked" ></label><%} %>
+							</p>
+							<p>
+								<button type="submit">정보수정</button>
+								<button type="reset">다시입력</button>
+							</p>
+						</div>
+					</fieldset>
+				</form>
+			</div>
 		</div>
 
-	</main>
+	</div>
 <%}} catch(SQLException ex) {
 			out.println("SQLException : " + ex.getMessage());
 		}%>
