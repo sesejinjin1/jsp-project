@@ -92,115 +92,119 @@ button:hover {
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
-	
-		<div id="container" class="sub" data-menu-name="참여 / 공간">
-			<div class="container_align">
-				<div id="section">
-					<h2>공지사항</h2>
-					<%@include file="../db.jsp"%>
+
+	<div id="container" class="sub" data-menu-name="참여 / 공간">
+		<div class="container_align">
+			<div id="section">
+				<h2>공지사항</h2>
+				<%@include file="../db.jsp"%>
+				<%
+				int pageSize = 10;
+				int currentPage = 1;
+				if (request.getParameter("page") != null) {
+					currentPage = Integer.parseInt(request.getParameter("page"));
+				}
+				int offset = (currentPage - 1) * pageSize;
+				ResultSet rs = null;
+				Statement stmt = null;
+
+				System.out.println(session.getAttribute("userId"));
+				try {
+					stmt = conn.createStatement();
+					String countQuery = "SELECT COUNT(*) AS total FROM board_notice";
+					ResultSet coun_rs = stmt.executeQuery(countQuery);
+					int total = 0;
+					if (coun_rs.next()) {
+						total = coun_rs.getInt("total");
+					}
+					coun_rs.close();
+					int totalPages = (int) Math.ceil((double) total / pageSize);
+					String querytext = "WITH RankedPosts AS (SELECT B.boardNo,title,B.cnt,cdatetime,userName,COALESCE(C.commentCnt, 0) AS commentCnt,B.userId,ROW_NUMBER() OVER (ORDER BY cdatetime ASC) AS rowNum FROM board_notice B INNER JOIN mini_user U ON B.userId = U.userId LEFT JOIN (SELECT boardNo, COUNT(*) AS commentCnt FROM board_comment GROUP BY boardNo) C ON B.boardNo = C.boardNo)SELECT *FROM RankedPosts ORDER BY rowNum DESC LIMIT "
+					+ pageSize + " OFFSET " + offset;
+					String query = "SELECT B.boardNo, title, B.cnt, cdatetime, userName, commentCnt, B.userId " + "FROM board_notice B "
+					+ "INNER JOIN mini_user U ON B.userId = U.userId " + "LEFT JOIN ( "
+					+ "SELECT COUNT(*) AS commentCnt, boardNo " + "FROM board_comment " + "GROUP BY boardNo "
+					+ ") C ON B.boardNo = C.boardNo";
+					rs = stmt.executeQuery(querytext);
+					System.out.println(querytext);
+				%>
+				<table>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>조회수</th>
+						<th>작성일</th>
+					</tr>
 					<%
-						int pageSize = 10;
-						int currentPage = 1;
-						if (request.getParameter("page") != null) {
-							currentPage = Integer.parseInt(request.getParameter("page"));
+					while (rs.next()) {
+						String commentCnt = "";
+						if (rs.getString("commentCnt") != null) {
+							commentCnt = "(" + rs.getString("commentCnt") + ")";
 						}
-						int offset = (currentPage - 1) * pageSize;
-						ResultSet rs = null;
-						Statement stmt = null;
-						
-						System.out.println(session.getAttribute("userId"));
-						try{
-							stmt = conn.createStatement();
-							String countQuery = "SELECT COUNT(*) AS total FROM board_notice";
-							ResultSet coun_rs = stmt.executeQuery(countQuery);
-							int total = 0;
-							if (coun_rs.next()) {
-								total = coun_rs.getInt("total");
-							}
-							coun_rs.close();
-							int totalPages = (int) Math.ceil((double) total / pageSize);
-							String querytext = "WITH RankedPosts AS (SELECT B.boardNo,title,B.cnt,cdatetime,userName,COALESCE(C.commentCnt, 0) AS commentCnt,B.userId,ROW_NUMBER() OVER (ORDER BY cdatetime ASC) AS rowNum FROM board_notice B INNER JOIN mini_user U ON B.userId = U.userId LEFT JOIN (SELECT boardNo, COUNT(*) AS commentCnt FROM board_comment GROUP BY boardNo) C ON B.boardNo = C.boardNo)SELECT *FROM RankedPosts ORDER BY rowNum DESC LIMIT "+pageSize+" OFFSET "+ offset;
-							String query = 
-									  "SELECT B.boardNo, title, B.cnt, cdatetime, userName, commentCnt, B.userId "
-									+ "FROM board_notice B "
-									+ "INNER JOIN mini_user U ON B.userId = U.userId "
-									+ "LEFT JOIN ( "
-									+ 	"SELECT COUNT(*) AS commentCnt, boardNo "
-									+	"FROM board_comment "
-									+	"GROUP BY boardNo "
-									+ ") C ON B.boardNo = C.boardNo";
-							rs = stmt.executeQuery(querytext);
-							System.out.println(querytext);
-						%>
-					<table>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>조회수</th>
-							<th>작성일</th>
-						</tr>
-						<%
-						while (rs.next()) {
-							String commentCnt = "";
-							if(rs.getString("commentCnt") != null){
-								commentCnt = "(" + rs.getString("commentCnt") + ")";
-							} 
-						%>
-						<tr>
-							<td><%= rs.getString("rowNum") %></td>
-							<td><a href="#"
-								onclick="fnView('<%= rs.getString("boardNo") %>')"> <%= rs.getString("title") %>
-									<% if(rs.getInt("commentCnt")>0){%> <%= commentCnt %> <%} %>
-							</a></td>
-							<td><%= rs.getString("userName") %></td>
-							<td><%= rs.getString("cnt") %></td>
-							<td><%= rs.getString("cdatetime") %></td>
-						</tr>
-						<%
-						}
-						%>
-		
-					</table>
-					<%if ("A".equals(session.getAttribute("status"))){ %>
-					<button onclick="location.href='board-noticeIn.jsp'">글쓰기</button>
-					<%} %>
-					<div class="pagination">
-						<%
-							if (currentPage > 1) {
-								int prevPage = currentPage - 1;
-								out.print("<a href=?page=" + prevPage + ">이전</a>");
-							}
-							for (int i = 1; i <= totalPages; i++) {
-								if (i == currentPage) {
-									out.print("<a href=?page=" + i + " class=active>" + i + "</a>");
-								} else {
-									out.print("<a href=?page=" + i + ">" + i + "</a>");
-								}
-							}
-							if (currentPage < totalPages) {
-								int nextPage = currentPage + 1;
-								System.out.println("<a href=?page=" + nextPage + ">다음</a>");
-								out.print("<a href=?page=" + nextPage + ">다음</a>");
-							}
-							%>
-					</div>
+					%>
+					<tr>
+						<td><%=rs.getString("rowNum")%></td>
+						<td><a href="#"
+							onclick="fnView('<%=rs.getString("boardNo")%>')"> <%=rs.getString("title")%>
+								<%
+								if (rs.getInt("commentCnt") > 0) {
+								%> <%=commentCnt%> <%
+ }
+ %>
+						</a></td>
+						<td><%=rs.getString("userName")%></td>
+						<td><%=rs.getString("cnt")%></td>
+						<td><%=rs.getString("cdatetime")%></td>
+					</tr>
 					<%
-						} catch(SQLException ex) {
-							out.println("SQLException : " + ex.getMessage());
+					}
+					%>
+
+				</table>
+				<%
+				if ("A".equals(session.getAttribute("status"))) {
+				%>
+				<button onclick="location.href='board-noticeIn.jsp'">글쓰기</button>
+				<%
+				}
+				%>
+				<div class="pagination">
+					<%
+					if (currentPage > 1) {
+						int prevPage = currentPage - 1;
+						out.print("<a href=?page=" + prevPage + ">이전</a>");
+					}
+					for (int i = 1; i <= totalPages; i++) {
+						if (i == currentPage) {
+							out.print("<a href=?page=" + i + " class=active>" + i + "</a>");
+						} else {
+							out.print("<a href=?page=" + i + ">" + i + "</a>");
 						}
-						%>
-		
-		
+					}
+					if (currentPage < totalPages) {
+						int nextPage = currentPage + 1;
+						System.out.println("<a href=?page=" + nextPage + ">다음</a>");
+						out.print("<a href=?page=" + nextPage + ">다음</a>");
+					}
+					%>
 				</div>
+				<%
+				} catch (SQLException ex) {
+				out.println("SQLException : " + ex.getMessage());
+				}
+				%>
+
+
 			</div>
 		</div>
+	</div>
 
-<jsp:include page="../layout/footer.jsp"></jsp:include>
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>
 <script>
-	function fnView(boardNo){
-		location.href="board-noticeView.jsp?boardNo="+boardNo;
+	function fnView(boardNo) {
+		location.href = "board-noticeView.jsp?boardNo=" + boardNo;
 	}
 </script>

@@ -11,20 +11,21 @@
 <body>
 	<%@include file="../db.jsp"%>
 	<%
-		String title = request.getParameter("title");
-		String contents = request.getParameter("contents");
-		String boardNo = request.getParameter("boardNo");
-		ResultSet rs = null;
-		Statement stmt = null;	
-		try{
-			stmt = conn.createStatement();
-			String query = "UPDATE board_notice SET title='"+title+"', contents='"+contents+"' WHERE boardNo ='"+boardNo+"'";
-			stmt.executeUpdate(query);
-			System.out.println("쿼리문 : " + query);
-			response.sendRedirect("board-notice.jsp");
-		} catch(SQLException ex) {
-			out.println("SQLException : " + ex.getMessage());
-		}
+	String title = request.getParameter("title");
+	String contents = request.getParameter("contents");
+	String boardNo = request.getParameter("boardNo");
+	ResultSet rs = null;
+	Statement stmt = null;
+	try {
+		stmt = conn.createStatement();
+		String query = "UPDATE board_notice SET title='" + title + "', contents='" + contents + "' WHERE boardNo ='"
+		+ boardNo + "'";
+		stmt.executeUpdate(query);
+		System.out.println("쿼리문 : " + query);
+		response.sendRedirect("board-notice.jsp");
+	} catch (SQLException ex) {
+		out.println("SQLException : " + ex.getMessage());
+	}
 	%>
 </body>
 </html>

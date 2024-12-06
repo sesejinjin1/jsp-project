@@ -22,30 +22,27 @@ table, th, tr, td {
 <body>
 	<%@include file="../db.jsp"%>
 	<%
-		ResultSet rs = null;
-		Statement stmt = null;
-		String boardNo = request.getParameter("boardNo");
-		String comment = request.getParameter("comment");
-		String sessionId = (String) session.getAttribute("userId");
-		try{
-			stmt = conn.createStatement();
-			String querytext = 
-					"INSERT INTO board_comment VALUES ("
-					+ "NULL, " + boardNo + ",'" + sessionId + "', '" + comment + "', "
-					+ "0, now(), now()"
-					+ ")";
-			stmt.executeUpdate(querytext);
-			out.println(querytext);
-		
-		} catch(SQLException ex) {
-			out.println("SQLException : " + ex.getMessage());
-		}
+	ResultSet rs = null;
+	Statement stmt = null;
+	String boardNo = request.getParameter("boardNo");
+	String comment = request.getParameter("comment");
+	String sessionId = (String) session.getAttribute("userId");
+	try {
+		stmt = conn.createStatement();
+		String querytext = "INSERT INTO board_comment VALUES (" + "NULL, " + boardNo + ",'" + sessionId + "', '" + comment
+		+ "', " + "0, now(), now()" + ")";
+		stmt.executeUpdate(querytext);
+		out.println(querytext);
+
+	} catch (SQLException ex) {
+		out.println("SQLException : " + ex.getMessage());
+	}
 	%>
 
 </body>
 </html>
 <script>
- 	alert("저장되었습니다.");
- 	location.href = document.referrer;
+	alert("저장되었습니다.");
+	location.href = document.referrer;
 </script>
 ​

@@ -52,40 +52,40 @@ button:focus {
 			<div id="section">
 				<h2>공지사항</h2>
 				<div id="contents" class="contents">
-				<form action="board-updateAction.jsp" name="board">
-					<%@include file="../db.jsp"%>
-					<%
-			ResultSet rs = null;
-			Statement stmt = null;
-			String boardNo = request.getParameter("boardNo");
-			
-			try{
-				stmt = conn.createStatement();
-				String querytext = "SELECT * FROM board_notice WHERE BOARDNO = " + boardNo;
-				rs = stmt.executeQuery(querytext);
-				
-				if(rs.next()){
-		%>
-					<input type="hidden" value="<%= rs.getString("boardNo") %>"
-						name="boardNo">
-					<div>
-						제목 : <input value="<%= rs.getString("title") %>" name="title">
-					</div>
-					<div>
-						내용 :
-						<textarea cols="50" rows="10" name="contents"><%= rs.getString("contents") %></textarea>
-					</div>
-					<button type="button" onclick="fnCheck()">저장</button>
-					<%			
-				} else {
-					out.println("삭제된 게시글 입니다.");
-				}
-				
-			} catch(SQLException ex) {
-				out.println("SQLException : " + ex.getMessage());
-			}
-		%>
-				</form>
+					<form action="board-updateAction.jsp" name="board">
+						<%@include file="../db.jsp"%>
+						<%
+						ResultSet rs = null;
+						Statement stmt = null;
+						String boardNo = request.getParameter("boardNo");
+
+						try {
+							stmt = conn.createStatement();
+							String querytext = "SELECT * FROM board_notice WHERE BOARDNO = " + boardNo;
+							rs = stmt.executeQuery(querytext);
+
+							if (rs.next()) {
+						%>
+						<input type="hidden" value="<%=rs.getString("boardNo")%>"
+							name="boardNo">
+						<div>
+							제목 : <input value="<%=rs.getString("title")%>" name="title">
+						</div>
+						<div>
+							내용 :
+							<textarea cols="50" rows="10" name="contents"><%=rs.getString("contents")%></textarea>
+						</div>
+						<button type="button" onclick="fnCheck()">저장</button>
+						<%
+						} else {
+						out.println("삭제된 게시글 입니다.");
+						}
+
+						} catch (SQLException ex) {
+						out.println("SQLException : " + ex.getMessage());
+						}
+						%>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -95,19 +95,19 @@ button:focus {
 </body>
 </html>
 <script>
-	function fnCheck(){
+	function fnCheck() {
 		var form = document.board;
-		if(form.title.value == ""){
+		if (form.title.value == "") {
 			alert("제목을 입력해주세요.");
 			form.title.focus();
 			return;
-		}	
-		if(form.contents.value == ""){
+		}
+		if (form.contents.value == "") {
 			alert("내용을 입력해주세요.");
 			form.contents.focus();
 			return;
 		}
 		alert("수정되었습니다.");
-		form.submit();	
+		form.submit();
 	}
 </script>

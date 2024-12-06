@@ -12,22 +12,22 @@
 <body>
 	<%@include file="../db.jsp"%>
 	<%
-		ResultSet rs = null;
-		Statement stmt = null;
-		String boardNo = request.getParameter("boardNo");
-		try{
-			stmt = conn.createStatement();
-			String querytext = "DELETE FROM board_notice WHERE boardNo = " + boardNo;
-			stmt.executeUpdate(querytext);
-			
-		} catch(SQLException ex) {
-			out.println("SQLException : " + ex.getMessage());
-		}
+	ResultSet rs = null;
+	Statement stmt = null;
+	String boardNo = request.getParameter("boardNo");
+	try {
+		stmt = conn.createStatement();
+		String querytext = "DELETE FROM board_notice WHERE boardNo = " + boardNo;
+		stmt.executeUpdate(querytext);
+
+	} catch (SQLException ex) {
+		out.println("SQLException : " + ex.getMessage());
+	}
 	%>
 
 </body>
 </html>
 <script>
 	alert("삭제되었습니다.");
-	location.href="../main/main.jsp";
+	location.href = "../main/main.jsp";
 </script>

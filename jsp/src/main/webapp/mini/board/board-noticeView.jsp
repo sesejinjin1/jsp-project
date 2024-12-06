@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../layout/default1.css">
 <style>
-
 .login-container h2 {
 	margin-bottom: 20px;
 	font-size: 24px;
@@ -151,97 +150,110 @@ button:focus {
 			<div id="section">
 				<h2>공지사항</h2>
 				<div id="contents" class="contents">
-						<form action="comment-insert.jsp" name="board">
-							<%@ include file="../db.jsp"%>
+					<form action="comment-insert.jsp" name="board">
+						<%@ include file="../db.jsp"%>
+						<%
+						ResultSet rs = null;
+						Statement stmt = null;
+						String boardNo = request.getParameter("boardNo");
+						try {
+							stmt = conn.createStatement();
+							String querytext = "SELECT * FROM board_notice WHERE BOARDNO = " + boardNo;
+							rs = stmt.executeQuery(querytext);
+							if (rs.next()) {
+						%>
+						<input type="hidden" value="<%=rs.getString("boardNo")%>"
+							name="boardNo">
+						<div class="content_header">
+							<h3><%=rs.getString("title")%></h3>
+							<dl>
+								<dt>등록일자 :</dt>
+								<dd><%=rs.getString("cdatetime")%></dd>
+							</dl>
+						</div>
+						<div class="content_content">
 							<%
-			                ResultSet rs = null;
-			                Statement stmt = null;
-			                String boardNo = request.getParameter("boardNo");
-			                try {
-			                    stmt = conn.createStatement();
-			                    String querytext = "SELECT * FROM board_notice WHERE BOARDNO = " + boardNo;
-			                    rs = stmt.executeQuery(querytext);
-			                    if (rs.next()) {
-			                    	
-			            %>
-							<input type="hidden" value="<%= rs.getString("boardNo") %>"
-								name="boardNo">
-							<div class="content_header">
-								<h3><%= rs.getString("title") %></h3>
-								<dl>
-									<dt>등록일자 : </dt>
-									<dd><%= rs.getString("cdatetime") %></dd>
-								</dl>
-							</div>
-							<div class="content_content">
-								<%for(int i=0;i<7;i++){ %>
-								<%= rs.getString("contents") %><br>
-								<%} %>
-							</div>
-			
+							for (int i = 0; i < 7; i++) {
+							%>
+							<%=rs.getString("contents")%><br>
 							<%
-			                    if (("admin").equals(session.getAttribute("userId"))) {
-			                %>
-							<div class="admin-actions">
-								<button type="button" onclick="fnDelete()">삭제</button>
-								<button type="button" onclick="fnUpdate()">수정</button>
-							</div>
-							<%
-			                    }
-			                %>
-							<hr>
-							<div class="comment-section">
-								<div>
-									댓글 :
-			
-									<%if((String)session.getAttribute("userId") != null){ %>
-									<input class="comment" type="text" placeholder="댓글을 등록하세요."
-										name="comment">
-									<button type="button" onclick="fnComment()">등록</button>
-									<%}else{%>
-									<input class="comment1" type="text"
-										placeholder="댓글은 로그인하셔야 등록가능합니다." name="comment" disabled>
-									<%} %>
-								</div>
-							</div>
-							<div class="comment-list">
+							}
+							%>
+						</div>
+
+						<%
+						if (("admin").equals(session.getAttribute("userId"))) {
+						%>
+						<div class="admin-actions">
+							<button type="button" onclick="fnDelete()">삭제</button>
+							<button type="button" onclick="fnUpdate()">수정</button>
+						</div>
+						<%
+						}
+						%>
+						<hr>
+						<div class="comment-section">
+							<div>
+								댓글 :
+
 								<%
-			                        querytext = "SELECT * FROM board_comment WHERE BOARDNO = " + boardNo;
-			                        rs = stmt.executeQuery(querytext);
-			                        while (rs.next()) {
-			                        	String commentNo = rs.getString("commentNo");
-			                    %>
-								<div class="comment-item">
-									<div class="comment-text">
-										<%= rs.getString("userId") %>
-										:
-										<%= rs.getString("comment") %>
-									</div>
-									<div class="comment-actions">
-										<%if(rs.getString("userId").equals(session.getAttribute("userId"))){ %>
-										<button type="button" class="edit">수정</button>
-										<button type="button" class="delete"
-											onclick="fnCommentDel(<%= commentNo %>)">삭제</button>
-										<%} %>
-									</div>
-			
-								</div>
+							if ((String) session.getAttribute("userId") != null) {
+							%>
+								<input class="comment" type="text" placeholder="댓글을 등록하세요."
+									name="comment">
+								<button type="button" onclick="fnComment()">등록</button>
 								<%
-			                        }
-			                    %>
-								<div>
-									<button type="button" onclick="fnBack()">목록</button>
+								} else {
+								%>
+								<input class="comment1" type="text"
+									placeholder="댓글은 로그인하셔야 등록가능합니다." name="comment" disabled>
+								<%
+								}
+								%>
+							</div>
+						</div>
+						<div class="comment-list">
+							<%
+							querytext = "SELECT * FROM board_comment WHERE BOARDNO = " + boardNo;
+							rs = stmt.executeQuery(querytext);
+							while (rs.next()) {
+								String commentNo = rs.getString("commentNo");
+							%>
+							<div class="comment-item">
+								<div class="comment-text">
+									<%=rs.getString("userId")%>
+									:
+									<%=rs.getString("comment")%>
 								</div>
+								<div class="comment-actions">
+									<%
+									if (rs.getString("userId").equals(session.getAttribute("userId"))) {
+									%>
+									<button type="button" class="edit">수정</button>
+									<button type="button" class="delete"
+										onclick="fnCommentDel(<%=commentNo%>)">삭제</button>
+									<%
+									}
+									%>
+								</div>
+
 							</div>
 							<%
-			                    } else {
-			                        out.println("삭제된 게시글 입니다.");
-			                    }
-			                } catch (SQLException ex) {
-			                    out.println("SQLException : " + ex.getMessage());
-			                }
-			            %>
-						</form>
+							}
+							%>
+							<div>
+								<button type="button" onclick="fnBack()">목록</button>
+							</div>
+						</div>
+						<%
+						} else {
+						out.println("삭제된 게시글 입니다.");
+						}
+						} catch (SQLException ex) {
+						out.println("SQLException : " + ex.getMessage());
+						}
+						%>
+					</form>
 				</div>
 			</div>
 		</div>

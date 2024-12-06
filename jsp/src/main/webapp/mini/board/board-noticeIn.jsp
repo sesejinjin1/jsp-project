@@ -86,25 +86,25 @@ button:focus {
 
 	</div>
 
-<jsp:include page="../layout/footer.jsp"></jsp:include>
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>
 <script>
-	function fnCheck(){
+	function fnCheck() {
 		var form = document.board;
-		if(form.title.value == ""){
+		if (form.title.value == "") {
 			alert("제목을 입력해주세요.");
 			form.title.focus();
 			return;
-		}	
-		if(form.contents.value == ""){
+		}
+		if (form.contents.value == "") {
 			alert("내용을 입력해주세요.");
 			form.contents.focus();
 			return;
 		}
-		
+
 		alert("저장되었습니다.");
 		form.submit();
-		
+
 	}
 </script>

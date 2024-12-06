@@ -12,26 +12,27 @@
 <body>
 	<%@include file="../db.jsp"%>
 	<%
-		ResultSet rs = null;
-		Statement stmt = null;
-		String commentNo = request.getParameter("commentNo");
-		String boardNo = request.getParameter("boardNo");
-		try{
-			stmt = conn.createStatement();
-			
-			String querytext = "DELETE FROM board_comment WHERE commentNo=" + commentNo;
-			System.out.println(querytext);
-			System.out.println(boardNo);
-			stmt.executeUpdate(querytext);
-			
-		} catch(SQLException ex) {
-			out.println("SQLException : " + ex.getMessage());
-		}
+	ResultSet rs = null;
+	Statement stmt = null;
+	String commentNo = request.getParameter("commentNo");
+	String boardNo = request.getParameter("boardNo");
+	try {
+		stmt = conn.createStatement();
+
+		String querytext = "DELETE FROM board_comment WHERE commentNo=" + commentNo;
+		System.out.println(querytext);
+		System.out.println(boardNo);
+		stmt.executeUpdate(querytext);
+
+	} catch (SQLException ex) {
+		out.println("SQLException : " + ex.getMessage());
+	}
 	%>
 
 </body>
 </html>
 <script>
 	alert("삭제되었다!");
-	location.href = "board-noticeView.jsp?boardNo=<%=boardNo%>";
+	location.href = "board-noticeView.jsp?boardNo=<%=boardNo%>
+	";
 </script>
