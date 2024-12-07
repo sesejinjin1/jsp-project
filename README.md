@@ -34,7 +34,7 @@
     </div>
    <!--    <div style= "text-align:left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🎞 시연 영상 </h2>    
-      <a href="https://www.youtube.com/watch?">▶FURNATURE 시연영상</a>
+      <a href="https://www.youtube.com/">▶ 시연영상</a>
     </div> -->
 <!--     <div style= "text-align:left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  📑 페이지별 기능 </h2>      
