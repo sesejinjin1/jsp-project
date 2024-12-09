@@ -39,12 +39,26 @@
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  📑 페이지별 기능 </h2>      
     </div>
     <div style= "text-align:left;">
-        <p>
-            <img width="50%" alt="메인" src="https://github.com/user-attachments/assets/a69745f0-ce09-49ec-af76-941622b9202a">
-        </p>
+        <!--         <p align=""> </p>-->
+        <img width="50%" alt="메인" src="https://github.com/user-attachments/assets/a69745f0-ce09-49ec-af76-941622b9202a">
+    </div>
+     <div style= "text-align:left;">
+        <img width="50%" alt="회원가입" src="https://github.com/user-attachments/assets/c89c34a0-88aa-460e-b0a6-226667a1c36f">
+    </div>
+    <div style= "text-align:left;">
+        <img width="50%" alt="로그인" src="https://github.com/user-attachments/assets/7849916f-8488-4d29-b86e-c621d4e8da14">
+    </div><div style= "text-align:left;">
+        <img width="50%" alt="게시판" src="https://github.com/user-attachments/assets/3185bfd8-227e-4d50-be5f-78925fc8499c">
+    </div><div style= "text-align:left;">
+        <img width="50%" alt="댓글" src="https://github.com/user-attachments/assets/fe3010f2-8600-4b6d-a66e-fc1383aaf8c8">
+    </div><div style= "text-align:left;">
+        <img width="50%" alt="댓글로그인" src="https://github.com/user-attachments/assets/d1ab16cf-fc2e-40df-a617-319d242a9a0e">
+    </div><div style= "text-align:left;">
+        <img width="50%" alt="관리자" src="https://github.com/user-attachments/assets/8e08d324-e748-4466-bdc9-d9ccf14701b4">
     </div>
     <div style= "text-align:left;"></div>
     <!--
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🎇 프로젝트 후기 </h2>       
     </div> -->
+
     
