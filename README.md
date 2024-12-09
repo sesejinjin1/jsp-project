@@ -38,7 +38,11 @@
     <div style= "text-align:left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  📑 페이지별 기능 </h2>      
     </div>
-    <div style= "text-align:left;">   ㅁㅁ</div>
+    <div style= "text-align:left;">
+        <p>
+            <img width="50%" alt="메인" src="https://github.com/user-attachments/assets/a69745f0-ce09-49ec-af76-941622b9202a">
+        </p>
+    </div>
     <div style= "text-align:left;"></div>
     <!--
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🎇 프로젝트 후기 </h2>       
