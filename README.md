@@ -39,47 +39,58 @@
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  📑 페이지별 기능 </h2>      
     </div>
     <div style= "text-align:left;">
+        <h3>메인 페이지</h3>
         <ul dir="auto">
-            <li><strong>메인페이지</strong> : 공지사항 최근 등록순으로 보여줍니다 (클릭시 해당 게시글로 이동) , 강좌신청 등 빠른 메뉴이동 </li>
+            <li>공지사항 최근 등록순으로 보여줍니다 (클릭시 해당 게시글로 이동) , 강좌신청 등 빠른 메뉴이동 </li>
         </ul>
         <img width="50%" alt="메인" src="https://github.com/user-attachments/assets/a69745f0-ce09-49ec-af76-941622b9202a">
     </div>
      <div style= "text-align:left;">
+        <h3>회원가입 페이지</h3>
         <ul dir="auto">
-            <li><strong></strong> : </li>
+            <li> 유효성검사를 및 중복확인을 통해 회원가입을 합니다. </li>
         </ul>
         <img width="50%" alt="회원가입" src="https://github.com/user-attachments/assets/c89c34a0-88aa-460e-b0a6-226667a1c36f">
     </div>
     <div style= "text-align:left;">
+        <h3>로그인 페이지</h3>
         <ul dir="auto">
-            <li><strong></strong> : </li>
+            <li>가입한 아이디와 패스워드를 통해 로그인 합니다.</li>
+            <li>같은 아이디로 5회이상 실패 시 관리자에게 문의하여 잠긴 계정을 풀어야 다시 로그인이 가능합니다. </li>
         </ul>
         <img width="50%" alt="로그인" src="https://github.com/user-attachments/assets/7849916f-8488-4d29-b86e-c621d4e8da14">
     </div>
     <div style= "text-align:left;">
+        <h3>공지사항 페이지</h3>
         <ul dir="auto">
-            <li><strong></strong> : </li>
+            <li>최신 글 순서로 정렬해 보여주고, 댓글이 있는 게시물의 경우 댓글의 수를 보여줍니다.</li>
+            <li>페이징 처리를 통해 한페이지에 10개씩 출력해주고 그 이상은 다음페이지로 넘어가 확인이 가능합니다.</li>
+            <li>관리자로 로그인했을 경우 글쓰기 버튼이 활성화 되어 게시글 작성,수정,삭제가 가능합니다.</li>
         </ul>
-        <img width="50%" alt="게시판" src="https://github.com/user-attachments/assets/3185bfd8-227e-4d50-be5f-78925fc8499c">
+        <img width="50%" alt="공지사항" src="https://github.com/user-attachments/assets/3185bfd8-227e-4d50-be5f-78925fc8499c">
     </div>
     <div style= "text-align:left;">
+        <h3>공지사항 상세페이지</h3>
         <ul dir="auto">
-            <li><strong></strong> : </li>
+            <li>등록된 공지사항의 상세내용을 보여줍니다.</li>
+            <li>로그인 했을 경우 댓글 작성, 수정, 삭제가 가능합니다.</li>
         </ul>
-        <p style="display: flex;">
-            <img style="margin-right: 10px;" width="50%" alt="댓글" src="https://github.com/user-attachments/assets/fe3010f2-8600-4b6d-a66e-fc1383aaf8c8">
-            <img width="50%" alt="댓글로그인" src="https://github.com/user-attachments/assets/d1ab16cf-fc2e-40df-a617-319d242a9a0e">
+        <p style="display: flex; justify-content: space-between;">
+            <img style="width: 48%; margin-right: 10px;" alt="댓글" src="https://github.com/user-attachments/assets/fe3010f2-8600-4b6d-a66e-fc1383aaf8c8">
+            <img style="width: 48%;" alt="댓글로그인" src="https://github.com/user-attachments/assets/d1ab16cf-fc2e-40df-a617-319d242a9a0e">
         </p>
     </div>
     <div style= "text-align:left;">
+        <h3>관리자 페이지</h3>
         <ul dir="auto">
-            <li><strong></strong> : </li>
+            <li>가입한 회원목록을 모두 보여주고 회원정보를 수정,삭제 합니다</li>
+            <li>로그인에 실패해 잠겨있는 계정을 풀어줍니다.</li>
         </ul>
         <img width="50%" alt="관리자" src="https://github.com/user-attachments/assets/8e08d324-e748-4466-bdc9-d9ccf14701b4">
     </div>
-    <div style= "text-align:left;"></div>
-    <!--
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🎇 프로젝트 후기 </h2>       
-    </div> -->
+    <div style="margin: 0 auto; text-align: left;" align= "left">
+        
+    </div>
 
     
