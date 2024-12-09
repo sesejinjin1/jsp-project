@@ -35,12 +35,12 @@
           <img src="https://img.shields.io/badge/Visual Studio Code-239120?&style=for-the-badge&logo=Visual Studio Code3&logoColor=white">
           </div>
     </div>
-    
-<!--     <div style= "text-align:left;">
+    <div style= "text-align:left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  📑 페이지별 기능 </h2>      
     </div>
-    <div style= "text-align:left;">   
-    <div style= "text-align:left;">
+    <div style= "text-align:left;">   ㅁㅁ</div>
+    <div style= "text-align:left;"></div>
+    <!--
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🎇 프로젝트 후기 </h2>       
     </div> -->
     
