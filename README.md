@@ -41,7 +41,7 @@
     <div style= "text-align:left;">
         <h3>메인 페이지</h3>
         <ul dir="auto">
-            <li>공지사항 최근 등록순으로 보여줍니다 (클릭시 해당 게시글로 이동) , 강좌신청 등 빠른 메뉴이동 </li>
+            <li>공지사항 최근 등록순으로 보여줍니다 (클릭시 해당 게시글로 이동) , 강좌신청 등 빠른 메뉴 이동이 가능합니다.</li>
         </ul>
         <img width="50%" alt="메인" src="https://github.com/user-attachments/assets/a69745f0-ce09-49ec-af76-941622b9202a">
     </div>
